@@ -15,9 +15,9 @@ class Mailer{
 		$mail->IsHTML(true);
 		$mail->CharSet = 'UTF-8';
 		//$mail->SMTPDebug = 2; 
-		$mail->Username = "fureverfriendorg@gmail.com";
-		$mail->Password = "uimyqydhwddmixfe";
-		$mail->SetFrom("fureverfriendorg@gmail.com");
+		$mail->Username = "pawpal950gmail.com";
+		$mail->Password = "xvbunpgmobpvfauu";
+		$mail->SetFrom("pawpal950@gmail.com");
 		$mail->Subject = $subject;
 		$mail->Body = $msg;
 		$mail->AddAddress($to);

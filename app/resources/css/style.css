@@ -2,7 +2,7 @@
 
 :root{
   --main: #ff6e01;
-  --bg: #f1e1d2;
+  --bg: #ffffff;
   --black: #000;
   --white: #fff;
   --box-shadow: 0 .5rem 1rem rgba(1, 1, 0, 0.1);
@@ -442,7 +442,7 @@ section{
   background: url(/furreverfriends/app/resources/img/footer.jpg) no-repeat;
   background-size: cover;
   padding: 3rem 7%;
-  margin-top: auto;
+  margin-top: 200px;
 }
 
 .footer .box-container{

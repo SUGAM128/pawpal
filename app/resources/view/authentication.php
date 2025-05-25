@@ -4,22 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <!-- <div class="header" >
-<a class="logo"><i class="fas fa-paw"></i> PawPal </a>
-</div>
-   -->
-<i class="fas fa-paw"></i><title>PawPal</title>
+  <title>PawPal</title>
   <link rel="stylesheet" href="/furreverfriends/app/resources/css/style.css">
   <style>
     body {
       display: flex;
+      background-image: url(/furreverfriends/app/resources/view/addopt.avif);
       flex-direction: column;
       min-height: 100vh;
-      background-color: #f0f0f0;
+      background-color: #ffffff;
       font-family: Arial, sans-serif;
-      /* background-image: url(images.jfif); */
-      
-      background-size:contain;
+      background-size: auto;
       background-position: auto;
       background-repeat: no-repeat;
     }
@@ -64,6 +59,26 @@
       background-color: green;
       color: var(--white);
     }
+
+    /* Style for the box */
+    .auth-box {
+      background-color: #ffffff;
+      border-radius: 30px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      width: 300px; /* Adjust width as needed */
+      margin-right:-200px; /* Margin to create space from the right */
+      align-self: flex-end; /* Align to the right side */
+    }
+
+    /* Adjustments for smaller screens */
+    @media (max-width: 768px) {
+      .auth-box {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px; /* Add margin at the bottom for spacing */
+      }
+    }
   </style>
 </head>
 
@@ -79,79 +94,91 @@
   </header>
 
   <main class="container main">
-    <div id="loginContainer" style="margin: 80px 0px 0px 0px">
-      <div class="container">
-        <h1>Login</h1>
-        <br>
-        <form action="/furreverfriends/authentication" method="post">
-          <div class="form-group">
-            <input type="email" class="form-control" id="loginEmail" placeholder="Enter email" name="loginEmail" required>
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="loginPassword" required>
-          </div>
-          <br>
-          <input type="submit" class="btn btn-outline-light" value="Login">
-        </form>
-      </div>
+    <div class="auth-box" id="loginContainer">
+      <h1>Login</h1>
+      <form action="/furreverfriends/authentication" method="post">
+        <div class="form-group">
+          <input type="email" class="form-control" id="loginEmail" placeholder="Enter email" name="loginEmail" required>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="loginPassword" required>
+        </div>
+        <input type="submit" class="btn btn-outline-light" value="Login">
+      </form>
     </div>
 
-    <div id="signupContainer" style="display: none;">
-      <div class="container">
-        <h1>Sign Up</h1>
-        <br>
-        <form action="/furreverfriends/authentication" method="post" onsubmit="return validateSignupForm()">
-          <div class="form-group">
-            <input type="text" class="form-control" id="signupName" placeholder="Name" name="signupName" required>
-          </div>
-          <div class="form-group">
-            <input type="email" class="form-control" id="signupEmail" placeholder="Enter email" name="signupEmail" required>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" id="signupPhone" placeholder="Contact Number" name="signupPhone" pattern="[0-9]{10}" title="Please enter a 10-digit phone number" maxlength="10" required style="-moz-appearance: textfield; -webkit-appearance: none;">
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" id="signupPassword" placeholder="Password" name="signupPassword" required>
-          </div>
-          <div class="form-group">
-            <input type="date" class="form-control" id="signupDob" name="signupDob" required>
-          </div>
-          <div class="form-group">
-            <select class="form-control" id="signupState" name="signupState" onchange="populateCities()">
-              <option value="" selected disabled>Select District</option>
-              <option value="Jhapa">Jhapa</option>
-              <option value="Kathmandu">Kathmandu</option>
-              <option value="Bhaktapur">Bhaktapur</option>
-            </select>
-          </div>
-          <div class="form-group" id="citiesContainer" style="display: none;">
-            <select class="form-control" id="signupCitySelect" name="signupCity">
-              <option value="" selected disabled>Select City</option>
-            </select>
-          </div>
-          <br>
-          <input type="submit" class="btn btn-outline-light" value="Sign Up">
-        </form>
-      </div>
-    </div>
+    <div class="auth-box" id="signupContainer" style="display: none;">
+      <h1>Sign Up</h1>
+      <form action="/furreverfriends/authentication" method="post" onsubmit="return validateSignupForm()">
+        <?php if (!isset($_SESSION['otp'])): ?>
+        <div class="form-group">
+          <input type="text" class="form-control" id="signupName" placeholder="Name" name="signupName" required>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" id="signupEmail" placeholder="Enter email" name="signupEmail" required>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="signupPhone" placeholder="Contact Number" name="signupPhone" pattern="[0-9]{10}" title="Please enter a 10-digit phone number" maxlength="10" required style="-moz-appearance: textfield; -webkit-appearance: none;">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="signupPassword" placeholder="Password" name="signupPassword" required>
+        </div>
+        <!-- <div class="form-group">
+          <input type="date" class="form-control" id="signupDob" name="signupDob" required>
+        </div> -->
+        <div class="form-group">
+          <select class="form-control" id="signupState" name="signupState" onchange="populateCities()">
+            <option value="" selected disabled>Select District</option>
+            <option value="Jhapa">Jhapa</option>
+            <option value="Kathmandu">Kathmandu</option>
+            <option value="Bhaktapur">Bhaktapur</option>
+          </select>
+        </div>
+        <div class="form-group" id="citiesContainer" style="display: none;">
+          <select class="form-control" id="signupCitySelect" name="signupCity">
+            <option value="" selected disabled>Select City</option>
+          </select>
+        </div>
+        <input type="submit" class="btn btn-outline-light" value="Sign Up">
+        <?php else: ?>
+          <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <div class="form-group">
+        <label for="otp">Enter OTP:</label>
+        <input type="text" class="form-control" id="otp" name="otp" required>
 
+        <!-- Trigger to let PHP know it's OTP verification -->
+        <input type="hidden" name="verifyOtp" value="true">
+
+        <button type="submit" class="btn btn-outline-light">Verify OTP</button>
+
+        <p></p>
+        <a href="#" onclick="history.back()">Didn't get OTP?</a>
+    </div>
+</form>
+
+
+        <?php endif; ?>
+      </form>
+    </div>
   </main>
+
   <br><br>
   <?php require(ROOT . 'app/resources/component/footer.php'); ?>
 
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      <?php if(isset($_SESSION['otp'])): ?>
+      document.getElementById('otp').style.display = 'block';
+      <?php endif; ?>
+    });
+
     var loginContainer = document.getElementById("loginContainer");
     var signupContainer = document.getElementById("signupContainer");
 
     function toggleLogin() {
       loginContainer.style.display = "block";
       signupContainer.style.display = "none";
-      document.getElementById("signupName").value = "";
-      document.getElementById("signupEmail").value = "";
-      document.getElementById("signupPhone").value = "";
-      document.getElementById("signupPassword").value = "";
-      document.getElementById("signupDob").value = "";
-      document.getElementById("signupCity").value = "";
+      clearSignupFields();
     }
 
     function toggleSignup() {
@@ -159,12 +186,21 @@
       signupContainer.style.display = "block";
     }
 
+    function clearSignupFields() {
+      document.getElementById("signupName").value = "";
+      document.getElementById("signupEmail").value = "";
+      document.getElementById("signupPhone").value = "";
+      document.getElementById("signupPassword").value = "";
+      document.getElementById("signupDob").value = "";
+      document.getElementById("signupCitySelect").value = "";
+    }
+
     function validateSignupForm() {
       var name = document.getElementById("signupName").value.trim();
       var email = document.getElementById("signupEmail").value.trim();
       var phone = document.getElementById("signupPhone").value.trim();
       var password = document.getElementById("signupPassword").value.trim();
-      var dob = document.getElementById("signupDob").value.trim();
+      // var dob = document.getElementById("signupDob").value.trim();
       var city = document.getElementById("signupCitySelect").value.trim();
 
       if (name === "" || email === "" || phone === "" || password === "" || dob === "" || city === "") {
@@ -188,6 +224,7 @@
         alert("Password must be at least 8 characters long");
         return false;
       }
+
       var passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
       if (!passwordRegex.test(password)) {
         alert("Password must be at least 8 characters long and include at least one number and one special character");
@@ -203,12 +240,13 @@
       var citySelect = document.getElementById("signupCitySelect");
       citySelect.innerHTML = '<option value="" selected disabled>Select City</option>';
 
+      var cities = [];
       if (state === "Jhapa") {
-        var cities = ["Charali","Birtamode", "Damak", "Mechinagar"];
+        cities = ["Charali", "Birtamode", "Damak", "Budhabare"];
       } else if (state === "Kathmandu") {
-        var cities = ["Kathmandu", "Kirtipur", "Thimi"];
+        cities = ["Kathmandu", "Kirtipur", "Imadol"];
       } else if (state === "Bhaktapur") {
-        var cities = ["Bhaktapur", "Madhyapur", "Thimi"];
+        cities = ["Bhaktapur", "Madhyapur", "Thimi"];
       }
 
       cities.forEach(function(city) {
@@ -221,11 +259,17 @@
       citiesContainer.style.display = "block";
     }
 
+    function resendOTP() {
+      <?php unset($_SESSION['otp']); ?>
+      toggleSignup();
+    }
+
     // Check for error message and display alert if exists
     <?php if (!empty($error_message)) { ?>
-      alert("<?php echo $error_message; ?>");
+    alert("<?php echo $error_message; ?>");
     <?php } ?>
   </script>
+
 </body>
 
 </html>

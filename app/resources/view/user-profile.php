@@ -52,10 +52,10 @@
             <label for="phone"><h3> Phone </h3></label>
             <input type="number" id="phone" placeholder="Enter your phone number" min="10" max="10" value="<?php echo $_SESSION['user']['phone'] ?>" required>
           </div>
-          <div>
+          <!-- <div>
             <label for="dob"><h3> Date of Birth </h3></label>
-            <input type="date" id="dob" value="<?php echo $_SESSION['user']['dob'] ?>" required>
-          </div>
+            <input type="date" id="dob" value="" required>
+          </div> -->
           <div>
             <label for="city"><h3> City </h3></label>
             <input type="text" id="city" placeholder="Enter your city" value="<?php echo $_SESSION['user']['city'] ?>" required>

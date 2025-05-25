@@ -28,7 +28,7 @@ class User extends Base
 
 
 
-    function signup($name, $email, $password, $phone, $dob, $state,$city)
+    function signup($name, $email, $password, $phone, $state, $city)
     {
         // Check if email already exists
         $check_sql = "SELECT * FROM user WHERE email = '$email'";
@@ -39,7 +39,7 @@ class User extends Base
             return false;
         } else {
             // Proceed with signup
-            $sql = "INSERT INTO user (name, email, password, phone, dob,state, city) VALUES ('$name', '$email', '$password', '$phone', '$dob','$state','$city')";
+            $sql = "INSERT INTO user (name, email, password, phone, state, city) VALUES ('$name', '$email', '$password', '$phone','$state','$city')";
             $result = mysqli_query($this->connection, $sql);
 
             if ($result) {
@@ -54,9 +54,9 @@ class User extends Base
 
 
 
-    function updateUser($name, $email, $password, $phone, $dob, $city)
+    function updateUser($name, $email, $password, $phone, $city)
     {
-        $sql = "UPDATE user SET name = '$name', password = '$password' , phone = '$phone', dob = '$dob', city = '$city' WHERE email = $email";
+        $sql = "UPDATE user SET name = '$name', password = '$password' , phone = '$phone', city = '$city' WHERE email = $email";
         $result = mysqli_query($this->connection, $sql);
 
         if ($result) {

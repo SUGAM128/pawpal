@@ -1,4 +1,20 @@
 <style>
+    .uil-instagram-alt:before {
+    content: '\ec09';
+}
+[class^=uil-]:before, [class*=" uil-"]:before {
+    font-family: unicons-line;
+    font-style: normal;
+    font-weight: 400;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
         body {
             position: relative;
             margin: 0;
@@ -70,13 +86,13 @@
         <h2>Meet Our Team</h2>
         <p>Our team consists of passionate animal lovers who are dedicated to making a difference in the lives of homeless pets. From our volunteers who spend countless hours socializing with the animals to our adoption counselors who match pets with their perfect families, each member plays a vital role in our organization.</p> <br>
         
-        <h2>Contact Us</h2>
-        <p>If you have any questions about our adoption process, the animals available for adoption, or if you're interested in volunteering, please don't hesitate to reach out to us.</p> <br>
-        <!-- <p>Email: info@petadoption.com<br>Phone: 123-456-7890</p> -->
+        <h2>Contact Us</h2> 
+        <p>If you have any questions about our adoption process, the animals available for adoption, please don't hesitate to reach out to us.</p> <br>
+       
         <h2>Email: </h2> 
-        <p><a href="mailto:info@furreverfriends.com" style="color:black"> info@furreverfriends.com </a> </p> <br> 
+        <p><a href="mailto:pawpal.02@gmail.com" style="color:black"> pawpal.020@gmail.com </a> </p> <br> 
         <h2> Phone: </h2> 
-        <p> (+97)9825 952077 </p>
+        <p> (+97)9825 944885 </p>
     </div>
     
     <script>
